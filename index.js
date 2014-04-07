@@ -1,62 +1,3 @@
-
-;(function(){
-
-/**
- * Require the module at `name`.
- *
- * @param {String} name
- * @return {Object} exports
- * @api public
- */
-
-function require(name) {
-  var module = require.modules[name];
-  if (!module) throw new Error('failed to require "' + name + '"');
-
-  if (module.definition) {
-    module.client = module.component = true;
-    module.definition.call(this, module.exports = {}, module);
-    delete module.definition;
-  }
-
-  return module.exports;
-}
-
-/**
- * Registered modules.
- */
-
-require.modules = {};
-
-/**
- * Register module at `name` with callback `definition`.
- *
- * @param {String} name
- * @param {Function} definition
- * @api private
- */
-
-require.register = function (name, definition) {
-  require.modules[name] = {
-    definition: definition
-  };
-};
-
-/**
- * Define a module's exports immediately with `exports`.
- *
- * @param {String} name
- * @param {Generic} exports
- * @api private
- */
-
-require.define = function (name, exports) {
-  require.modules[name] = {
-    exports: exports
-  };
-};
-
-require.register("jsonfn", function (exports, module) {
 /**
 * JSONfn - javascript (both node.js and browser) plugin to stringify, 
 *          parse and clone objects with Functions, Regexp and Date.
@@ -75,7 +16,7 @@ require.register("jsonfn", function (exports, module) {
 *         JSONfn.clone(obj[, date2obj]);
 *
 *     nodejs:
-*       var JSONfn = require("path/to/json-fn");
+*       var JSONfn = require('path/to/json-fn');
 *       JSONfn.stringify(obj);
 *       JSONfn.parse(str[, date2obj]);
 *       JSONfn.clone(obj[, date2obj]);
@@ -136,14 +77,3 @@ exports.clone = function (obj, date2obj) {
   return exports.parse(exports.stringify(obj), date2obj);
 };
 
-
-});
-
-if (typeof exports == "object") {
-  module.exports = require("jsonfn");
-} else if (typeof define == "function" && define.amd) {
-  define([], function(){ return require("jsonfn"); });
-} else {
-  this["JSONfn"] = require("jsonfn");
-}
-})()

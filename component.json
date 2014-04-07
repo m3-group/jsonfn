@@ -1,0 +1,21 @@
+{
+  "name": "jsonfn",
+  "repository": "vkiryukhin/jsonfn",
+  "description": "Javascript (both node.js and browser) plugin to stringify / parse / clone jsvascript objects with functions, RegExp, and Dates",
+  "keywords": [
+    "stringify object with function",
+    "stringify object with regexp",
+    "stringify with function",
+    "JSON with regex",
+    "JSON stringify with function",
+    "JSON stringify with functions",
+    "json",
+    "parse",
+    "functions"
+  ],
+  "version": "0.60.00",
+  "scripts": [
+    "index.js"
+  ],
+  "license": "MIT"
+}
